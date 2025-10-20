@@ -1,0 +1,3 @@
+create domain name as 
+varchar(20) check (value in())
+
