@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <title>Computing</title>
+    </head>
+    <body>
+        <h1 style="text-align: center; padding-bottom: 30px; border-bottom: 2px solid black;">Morning</h1>
+
+
+        <div id="containter">
+            <div id="big-1">
+                <div id="small-1">
+                    <p><b id="text-1"><i>&#8226 </i>Bánh Ra</b></p>
+                    <div id="left">
+                        <div id="left1">
+                            <script>
+                                let nho; let trung; let lon;
+                                let nho1; let trung1; let lon1;
+                                let bonho,bn,botrung,bolon;
+                                let daonho,daotrung,dt,daolon;
+                                let quachieunho,quachieutrung,quachieulon;
+                                
+                            </script>
+                            <label for="nho""><b>Nhỏ: </b></label>
+                            <input id="nho" name="nho" type="text" oninput="nho = this.value; ">
+                            <label for="trung""><b>Trung: </b></label>
+                            <input id="trung" name="trung" type="text" oninput="trung = this.value;">
+                            <label for="lon""><b>Lớn: </b></label>
+                            <input id="lon" name="lon" type="text" oninput="lon = this.value"> 
+                            
+                    <!-- Mối -->
+                    <p style="padding-top:50px;"><b id="text-1" ><i>&#8226 </i>Mối</b></p>
+                    <!--Bỏ-->
+                    <p style="padding-top:55px;"><b id="text-1" ><i>&#8226 </i>Bỏ</b></p>
+                        <div>
+                            <label for="bo-nho" style="display: inline-block;"><b>Nhỏ: </b></label>
+                            <input name="nho" id="bo-nho" type="text" style="display: inline-block; width: 100px;" oninput="bonho = bn = this.value;bonho*=3"></input>
+                        </div>
+                        <div>
+                            <label for="bo-trung" style="display: inline-block;"><b>Trung: </b></label>
+                            <input name="trung" id="bo-trung" type="text" style="display: inline-block; width: 100px;" oninput="botrung = this.value;botrung*=4"></input>
+                        </div>
+                        <div>
+                            <label for="bo-lon" style="display: inline-block;"><b>Lớn: </b></label>
+                            <input name="lon" id="bo-lon" type="text" style="display: inline-block; width: 100px;" oninput="bolon = this.value; bolon*=7"></input>
+                        </div>
+                    
+                    <!--Đào-->
+                     <p style="padding-top:55px;"><b id="text-1" ><i>&#8226 </i>Đào</b></p>
+                        <div>
+                            <label for="dao-nho" style="display: inline-block;"><b>Nhỏ: </b></label>
+                            <input name="nho" id=daonho" type="text" style="display: inline-block; width: 100px;" oninput="daonho = this.value;daonho*=3"></input>
+                        </div>
+                        <div>
+                            <label for="bo-trung" style="display: inline-block;"><b>Trung: </b></label>
+                            <input name="trung" id="daotrung" type="text" style="display: inline-block; width: 100px;" oninput="daotrung= dt = this.value;daotrung=Math.round(daotrung*3.5);"></input>
+                        </div>
+                        <div>
+                            <label for="bo-lon" style="display: inline-block;"><b>Lớn: </b></label>
+                            <input name="lon" id="daolon" type="text" style="display: inline-block; width: 100px;" oninput="daolon = this.value; daolon*=7"></input>
+                        </div>
+                        <p style="padding-top:55px;" id="tangdao"></p>
+                        <!--qua chiều-->
+                        <p style="padding-top:55px;"><b id="text-1" ><i>&#8226 </i>Qua Chiều</b></p>
+                        <div>
+                            <label for="quachieunho" style="display: inline-block;"><b>Nhỏ: </b></label>
+                            <input name="quachieunho" id=quachieunho" type="text" style="display: inline-block; width: 100px;" oninput="quachieunho = this.value;quachieunho*=3"></input>
+                        </div>
+                        <div>
+                            <label for="bo-trung" style="display: inline-block;"><b>Trung: </b></label>
+                            <input name="trung" id="quachieutrung" type="text" style="display: inline-block; width: 100px;" oninput="quachieutrung = this.value;quachieutrung*=4"></input>
+                        </div>
+                        <div>
+                            <label for="bo-lon" style="display: inline-block;"><b>Lớn: </b></label>
+                            <input name="lon" id="quachieulon" type="text" style="display: inline-block; width: 100px;" oninput="quachieulon = this.value; quachieulon*=7"></input>
+                        </div>
+
+                        <!--khác -->
+                        
+<p style="padding-top:20px" id="text-1"><b><i>&#8226; </i>Khác</b></p>
+<div>
+  <label for="sokhac" style="display:inline-block;width:auto"><b>How many: </b></label>
+  <input id="sokhac" type="number" min="0" style="width:60px" oninput="buildKhac()">
+</div>
+
+<!-- Tổng của tất cả mục Khác -->
+<p style="margin-top:8px; color: red">Tổng KHÁC: <b id="khac-total">0</b></p>
+<hr>
+
+<!-- Nơi sinh các khối Khác -->
+<div id="khac-container"></div>
+
+<script>
+  const khacContainer = document.getElementById('khac-container');
+  const khacTotalEl   = document.getElementById('khac-total');
+    
+
+  function buildKhac() {
+    // Xoá cũ, sinh lại
+    khacContainer.innerHTML = '';
+    const n = +document.getElementById('sokhac').value || 0;
+
+    for (let i = 0; i < n; i++) {
+      const wrap = document.createElement('div');
+      wrap.className = 'khac-item';
+      wrap.style.margin = '10px 0';
+
+      // Khối nội dung mỗi mục
+      wrap.innerHTML = `
+        <p style="margin:6px 0 4px 0">
+          <b><i>&#8226; </i>Khác #${i+1}</b>
+        </p>
+        <div style="margin:2px 0">
+          <label style="display:inline-block;width:60px"><b>Tên:</b></label>
+          <input class="ten" type="text" style="width:160px">
+        </div>
+        <div style="margin:0">
+          <label style="display:inline-block;width:60px"><b>Nhỏ:</b></label>
+          <input class="nho" type="number" style="width:80px"><br>
+          <label style="display:inline-block;width:60px"><b>Trung:</b></label>
+          <input class="trung" type="number" style="width:80px"><br>
+          <label style="display:inline-block;width:60px"><b>Lớn:</b></label>
+          <input class="lon" type="number" style="width:80px">
+        </div>
+        <div style="margin:4px 0">
+          Tổng mục này: <b class="sum">0</b>
+        </div>
+        <hr>
+      `;
+
+      khacContainer.appendChild(wrap);
+
+      // Gắn sự kiện tính cho 3 ô
+      const nho   = wrap.querySelector('.nho');
+      const trung = wrap.querySelector('.trung');
+      const lon   = wrap.querySelector('.lon');
+      const sumEl = wrap.querySelector('.sum');
+
+      const calcOne = () => {
+        const a = +nho.value   || 0;
+        const b = +trung.value || 0;
+        const c = +lon.value   || 0;
+        const sum = a*3 + b*4 + c*7;   // hệ số bạn đang dùng
+        sumEl.textContent = sum;
+        updateKhacTotal();
+      };
+
+      nho  .addEventListener('input', calcOne);
+      trung.addEventListener('input', calcOne);
+      lon  .addEventListener('input', calcOne);
+    }
+
+    // làm mới tổng khi thay đổi số lượng mục
+    updateKhacTotal();
+  }
+  
+  function updateKhacTotal() {
+    let total = 0;
+    khacContainer.querySelectorAll('.sum').forEach(s => total += (+s.textContent || 0));
+    khacTotalEl.textContent = total;
+    khacMinus.innerHTML= khacTotalEl.innerHTML;
+    right.insertBefore(line7,afterKhac);
+    afterKhac.innerHTML= (+afterQuachieu.innerHTML) - (+khacMinus.innerHTML);
+    resultsang = (+afterKhac.innerHTML);
+  }
+</script>
+
+
+                        </div>
+                        <div id="right1">
+                            <!-- compute applying js -->
+                             <p id="compute-nho"></p>
+                             <p id="compute-trung" style="padding-top: 15px;"></p>
+                             <p id="compute-lon" style="padding-top: 15px;" ></p>
+                             <p id="sum-banhra" style="padding-top: 0px; font-weight:bold" ></p>  <!-- result bánh ra -->
+
+                             <!--Trừ mối -->
+                             <p id="moi-minus"></p>
+                             <p id="moi-minus-result" style="font-weight:bold"></p>
+
+                             <!--Trừ Bỏ-->
+                            <p id="bo-minus" style="padding-bottom: 50px;"></p>
+                            <p id="afterbo" style="font-weight:bold; padding-bottom:50px"></p>
+                            
+                            <!--Trừ đào-->
+                            <div id="daogroup">
+                                <p id="dao-minus" style="padding-bottom: 50px;"></p>
+                                <p id="afterdao" style="font-weight:bold; padding-bottom:50px"></p>
+                            </div>
+                            
+                            <!--Trừ qua chiều-->
+                            <p id="quachieu-minus" style="padding-bottom: 50px;"></p>
+                            <p id="afterquachieu" style="font-weight:bold;padding-bottom:50px"></p>
+
+                            <!--trừ khác-->
+                            <p id="khac-minus"style="padding-bottom: 50px;"></p>
+                            <h1 id="afterkhac" style="font-weight:bold"></h1>
+
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div id="small-2">
+                    <p><b id="text-1"><i>&#8226 </i>Mối</b></p>
+                    <div id="right">
+                        <div id="left1">
+                            <label for="nho1""><b>Nhỏ: </b></label>
+                            <input id="nho1" name="nho" type="text" oninput="nho1 = this.value; ">
+                            <label for="trung1""><b>Trung: </b></label>
+                            <input id="trung1" name="trung" type="text" oninput="trung1 = this.value;">
+                            <label for="lon1""><b>Lớn: </b></label>
+                            <input id="lon1" name="lon" type="text" oninput="lon1 = this.value"> 
+                        </div>
+
+                        <!--compute Mối-->
+                        <div id="right2">
+                            <p id="compute-nho1"></p>
+                             <p id="compute-trung1" style="padding-top: 15px;"></p>
+                             <p id="compute-lon1" style="padding-top: 15px;" ></p>
+                             <p id="moi" style="padding-top: 0px; font-weight:bold" ></p>  <!-- result mối -->
+                        </div>
+                    </div>
+
+                </div>
+                <!--tính Nhỏ -->
+                <div id="small-3">
+                    <script>
+                        let dao,le;
+                    </script>
+                    <div id="left-2">
+                        <div>
+                            <label for="hoai"" style="display:inline-block;width: 50px;"><b>Hoài: </b></label>
+                            <p  id="hoai"  style="display: inline-block; width: 100px; text-align: center; "></p>
+                            
+                        </div>
+                        <div>
+                            <label for="dao"" style="display:inline-block;width: 50px"><b>Đào: </b></label>
+                            <input name="dao" id="dao" type="text" style="display: inline-block; width: 100px;" oninput="dao = this.value;"></input>
+                        </div>
+                        <div>
+                            <label for="le"" style="display:inline-block;width: 50px"><b>Lẻ: </b></label>
+                            <input name="le" id="le" type="text" style="display: inline-block; width: 100px;" oninput="le = this.value;calcdoichieu(hoai,le,dao)"></input>
+                        </div>
+                        <div>
+                            <label for="bo"" style="display:inline-block;width: 50px"><b>Bỏ: </b></label>
+                            <p id="bo"  style="display: inline-block; width: 100px; text-align: center; "></p>
+                        </div>
+                        <hr style="width: 100px;display:inline-block; margin-left: 60px; ">
+                        <!--tính doi chieu-->
+                        <p id="doichieu" style="padding-top: 0px; font-weight:bold;padding-left:100px" ></p>
+
+
+                    </div>
+                </div>
+
+                <!-- chi tiêu -->
+                <div id="small-4">
+                    <p><b id="text-1"><i>&#8226 </i>Chi tiêu</b></p>
+                    <label for="hoai"" style="display:inline-block;width: auto"><b>How many: </b></label>
+                        <input name="hoai" id="chitieu" type="text" style="display: inline-block; width: 100px;" oninput="chitieu()"></input>
+
+
+                </div>
+            </div>
+            <!-- Final buổi sáng-->
+            <div id="big-2">
+                <script>let tongthucte = 0;</script>
+                 <p><b id="text-1"><i>&#8226 </i>Tổng buổi sáng trong giấy:</b></p>
+                 <input type="text" id="tongthucte" oninput="tongthucte=(+(this.value)); ketthuc()">
+                 <h3 id="ket"></h3>
+
+            </div>
+        </div>
+        
+        <!--buổi chiều code -->
+        <script>
+            let buoichieunho, buoichieutrung, buoichieulon;
+        </script>
+        <div id="buoichieu">
+            <h1 style="text-align: center; border-top:2px dashed blue; border-bottom:2px solid black; padding-top: 20px; padding-bottom:30px">Afternoon</h1>
+            <div id="big-3">
+                
+                <div id="chieuleft">
+                    <!-- khung left -->
+                    <div id="chieuleft-left">
+                        <!-- mark bánh ra-->
+                        <p><b id="text-1"><i>&#8226 </i>Bánh Ra</b></p>
+                        <label for="nho"><b>Nhỏ: </b></label>
+                        <input class="khunginput" id="buoichieunho" name="nho" type="text" oninput="buoichieunho = (+this.value)*3;(function() {computenhoafter.innerHTML= buoichieunho })()">
+                        <label for="trung"><b>Trung: </b></label>
+                        <input class="khunginput" id="buoichieutrung" name="trung" type="text" oninput="buoichieutrung = (+this.value)*4;(function() {computetrungafter.innerHTML= buoichieutrung})()">
+                        <label for="lon"><b>Lớn: </b></label>
+                        <input class="khunginput" id="buoichieulon" name="lon" type="text" oninput="buoichieulon = (+this.value)*7;(function() {computelonafter.innerHTML= buoichieulon })();addline()" >
+
+                        <!--mark chi tiêu -->
+                        <p style="margin-top:30px;padding-bottom:70px" id="markchitieu" ><b id="text-1"><i>&#8226 </i>Chi tiêu chiều</b></p>
+
+                        <!--mark khác chieu-->
+                        <p style="padding-top:20px" id="text-1"><b><i>&#8226; </i>Khác</b></p>
+<div>
+  <label for="sokhacchieu" style="display:inline-block;width:auto"><b>How many: </b></label>
+  <input id="sokhacchieu" type="number" min="0" style="width:60px" oninput="buildKhacchieu()">
+</div>
+
+<!-- Tổng của tất cả mục Khác -->
+<p style="margin-top:8px; color:red">Tổng KHÁC: <b id="khac-total-chieu">0</b></p>
+<hr>
+
+<!-- Nơi sinh các khối Khác -->
+<div id="khac-container-chieu"></div>
+
+<script>
+  const khacContainerchieu = document.getElementById('khac-container-chieu');
+  const khacTotalElchieu   = document.getElementById('khac-total-chieu');
+    
+
+  function buildKhacchieu() {
+    // Xoá cũ, sinh lại
+    khacContainerchieu.innerHTML = '';
+    const k = +document.getElementById('sokhacchieu').value || 0;
+
+    for (let i = 0; i < k; i++) {
+      const wrap = document.createElement('div');
+      wrap.className = 'khac-item';
+      wrap.style.margin = '10px 0';
+
+      // Khối nội dung mỗi mục
+      wrap.innerHTML = `
+        <p style="margin:6px 0 4px 0">
+          <b><i>&#8226; </i>Khác #${i+1}</b>
+        </p>
+        <div style="margin:2px 0">
+          <label style="display:inline-block;width:60px"><b>Tên:</b></label>
+          <input class="ten" type="text" style="width:160px">
+        </div>
+        <div style="margin:0">
+            
+          <label style="display:inline-block;width:60px"><b>Nhỏ:</b></label>
+          <input class="nho" type="number" style="width:80px"><br>
+          <label style="display:inline-block;width:60px"><b>Trung:</b></label>
+          <input class="trung" type="number" style="width:80px"><br>
+          <label style="display:inline-block;width:60px"><b>Lớn:</b></label>
+          <input class="lon" type="number" style="width:80px"><br>
+            <label style="display:inline-block;width:100px"><b>Trừ hay cộng:</b></label>
+<select class="dau" style="width:80px">
+  <option value="+">+</option>
+  <option value="-">-</option>
+</select>
+        </div>
+        <div style="margin:4px 0">
+          Tổng mục này: <b class="sum">0</b>
+        </div>
+        <hr>
+      `;
+      khacContainerchieu.appendChild(wrap);
+
+      // Gắn sự kiện tính cho 3 ô
+      const nho   = wrap.querySelector('.nho');
+      const trung = wrap.querySelector('.trung');
+      const lon   = wrap.querySelector('.lon');
+      const dau   = wrap.querySelector('.dau');
+      const sumElchieu = wrap.querySelector('.sum');
+
+      const calcOnechieu = () => {
+        const a = +nho.value   || 0;
+        const b = +trung.value || 0;
+        const c = +lon.value   || 0;
+        // let sum = a*3 + b*4 + c*7;   // hệ số bạn đang dùng
+        const base = a*3 + b*4 + c*7;
+        const sign = (dau.value === '-') ? -1 : 1;  // '-' thì trừ, '+' thì cộng
+        const sum  = base * sign;
+        sumElchieu.textContent = sum;
+        updateKhacTotalchieu();
+      };
+
+      nho  .addEventListener('input', calcOnechieu);
+      trung.addEventListener('input', calcOnechieu);
+      lon  .addEventListener('input', calcOnechieu);
+      dau  .addEventListener('change', calcOnechieu);
+    }
+
+    // làm mới tổng khi thay đổi số lượng mục
+    updateKhacTotalchieu();
+  }
+  
+  function updateKhacTotalchieu() {
+    let total = 0;
+    khacContainerchieu.querySelectorAll('.sum').forEach(s => total += (+s.textContent || 0));
+    khacTotalElchieu.textContent = total;
+    khacMinuschieu.innerHTML= khacTotalElchieu.innerHTML;
+    chieuleftright.insertBefore(line14,afterKhacchieu);
+    afterKhacchieu.innerHTML= (+afterchitieuchieu.innerHTML) + (+khacMinuschieu.innerHTML); // tổng cuối chiều dạng string afterKhacchieu
+    tongcuoi = (+afterKhacchieu.innerHTML);
+  }
+</script>
+
+
+
+                    </div>
+
+                
+
+                    <!--khung trình bày -->
+                    <div id="chieuleft-right">
+                        <!--tính bánh ra-->
+                        <p id="compute-nho-afternoon" style="padding-top:40px" ></p>
+                        <p id="compute-trung-afternoon" style="padding-top: 15px;"></p>
+                        <p id="compute-lon-afternoon" style="padding-top: 15px;" ></p>
+                        <p id="sum-banhra-afternoon" style="padding-top: 0px; font-weight:bold" ></p>
+                        
+                        <!--tính qua chiều-->
+
+                        <!-- trừ chi tiêu -->
+                         <p id="chitieuchieu-display" style="padding-top: 40px;"></p>
+                         <p id="afterchitieuchieu" style="padding-top: 15px; font-weight: bold"></p>
+
+                         <!-- trừ khác -->
+                        <p id="khac-minus-chieu"style="padding-bottom: 50px;"></p>
+                        <h1 id="afterkhac-chieu" style="font-weight:bold"></h1>
+                    
+                    </div>
+                     
+
+
+                </div>
+
+                <!--khung chi tiêu-->
+                <div id="chieuright">
+                    <p><b id="text-1"><i>&#8226 </i>Chi tiêu</b></p>
+                    <label for="hoai"" style="display:inline-block;width: auto"><b>How many: </b></label>
+                    <input name="hoai" id="chitieuchieu" type="text" style="display: inline-block; width: 100px;" oninput="chitieuchieu()"></input>
+
+                </div>
+                
+
+            </div>
+            <!--khung cuối-->
+            <div id="big-4">
+                <div id="khungtongthucte" style="display:flex;flex-direction: row;">
+                    <p style="padding-right:10px" id="text-1"><b>Tổng thực tế chiều: </b></p>
+                    <input type="number" oninput="countthucte()" id="tongthuctechieu">
+                    <span style="padding-left:10px"><b>+ Số bán lẻ: 500 </b></span>
+                </div>
+                
+                <h3 id="chieuresult"></h3>
+
+                <h1 id="tongket">=> </h1>
+
+
+
+            </div>
+        </div>
+    <script>
+            let computenhoafter = document.getElementById('compute-nho-afternoon');
+            let computetrungafter = document.getElementById('compute-trung-afternoon');
+            let computelonafter = document.getElementById('compute-lon-afternoon');
+            let sumbanhrachieu = document.getElementById('sum-banhra-afternoon');
+            let chieuleftright = document.getElementById('chieuleft-right');
+            let chieuleftleft = document.getElementById('chieuleft-left');
+            let addquachieu = document.createElement('p');
+            let addquachieudisplay =document.createElement('p');
+            let line11 = document.createElement('hr');
+            let afteraddquachieu = document.createElement('p');
+            let line10 = document.createElement('hr');
+            let inputlonchieu = document.getElementById('buoichieulon');
+
+            function addline(){
+                chieuleftright.insertBefore(line10,sumbanhrachieu);
+                sumbanhrachieu.innerHTML = buoichieunho + buoichieulon + buoichieutrung; /// sumbanhrachieu là string
+                quachieuorbanhra = +sumbanhrachieu.innerHTML; // biến chính thức sau bánh ra 
+                if ((+afterQuachieu.innerHTML) > 0){
+                    addQuachieu();
+                }
+
+            }
+
+            function addQuachieu(){
+                inputlonchieu.insertAdjacentElement('afterend',addquachieu);
+                sumbanhrachieu.insertAdjacentElement('afterend',addquachieudisplay);
+                addquachieudisplay.insertAdjacentElement('afterend',line11);
+                line11.insertAdjacentElement('afterend',afteraddquachieu);
+                afteraddquachieu.style.paddingTop='15px';
+                addquachieudisplay.style.paddingTop='40px';
+                addquachieu.style.paddingTop='30px';
+                addquachieu.style.paddingBottom='50px';
+                addquachieu.style.fontWeight='bold';
+                afteraddquachieu.style.fontWeight='bold';
+                addquachieudisplay.innerHTML = quachieuMinus.innerHTML;
+                addquachieu.innerHTML ='Thêm Qua Chiều';
+                addquachieu.color='red';
+                afteraddquachieu.innerHTML= (+sumbanhrachieu.innerHTML) + (+addquachieudisplay.innerHTML); // sum sau qua chiều dạng string 
+                quachieuorbanhra = +afteraddquachieu.innerHTML; // biến chính thức sau khi trừ qua chiều (int)
+                tongcuoi = +afteraddquachieu.innerHTML;
+            }
+
+
+    </script>
+
+    
+
+    </body>
+    <script src="script.js"></script>
+   
+</html>
+

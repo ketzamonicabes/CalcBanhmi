@@ -1,0 +1,180 @@
+body{
+    background-color: white;
+    line-height: 30px;
+    overflow-x:hidden;
+    font-size: 20px;
+}
+
+p {
+    padding:0px;
+    margin:0px;
+}
+
+hr{
+  border: none;         /* bỏ viền mặc định */
+  border-top: 2px solid black; /* đường thẳng */
+  width: 80%;           /* độ dài */
+  margin: 10px auto;    /* căn giữa */
+
+}
+
+input {
+    height: 20px;
+    font-size: 13px;
+    border-radius:5px;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+}
+
+#small-1 {
+    /* background-color: red; */
+    grid-area: s1;
+    width: auto;
+    height: auto;
+    border-right:1px solid black;
+}
+#small-2 {
+    /* background-color: aqua; */
+    grid-area: s2;
+    height: auto ;
+    margin-left:10px;
+}
+#small-3 {
+    /* background-color: brown; */
+    grid-area: s3;
+    height: auto;
+    margin-left:10px;
+}
+#small-4 {
+    /* background-color: blue; */
+    grid-area: s4;
+    margin-left:10px;
+}
+
+#big-1 {
+    width:100%;
+    height: auto;
+    display: grid;
+    margin: 0px 30px;
+    padding-bottom:50px;
+    grid-template-areas: 
+    's1 s2'
+    's1 s3'
+    's1 s4'
+    ;
+}
+
+#big-2 {
+    margin: 0px 30px;
+}
+
+#big-3 {
+    margin: 0px 30px;
+}
+
+#big-4 {
+    margin: 0px 30px;
+}
+
+/* left column format */
+#left, #right{
+    display: flex;
+    flex-direction: row;
+}
+
+#left1 {
+    display: flex;
+    flex-direction: column;
+}
+
+#right1, #right2, #daogroup{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top:25px;
+    width: 100%;
+}
+
+#left-2 {
+    display: flex;
+    flex-direction: column;
+}
+/* afternoon */
+#big-3 {
+    display:flex;
+    flex-direction: row;
+    width:100%;
+} 
+
+ #chieuright {
+    display:flex;
+    flex-direction: column;
+    width:50%;
+    margin-top:300px;
+    margin-left:10px;
+    /* background-color: brown; */
+}
+
+#chieuleft {
+    display:flex;
+    flex-direction: row;
+    height: auto;
+    width: 50%;
+    border-right:1px solid black;
+}
+
+#chieuleft-left, #chieuleft-right {
+    display:flex;
+    flex-direction: column;
+}
+
+#chieuleft-left {
+    /* background-color: yellow; */
+    width:40%;
+}
+
+#chieuleft-right {
+    /* background-color: greenyellow; */
+    width:60%;
+    align-items: center;
+}
+
+.khunginput {
+    width:50%;
+}
+
+#chitieuchieu {
+    margin-bottom:30px !important;
+}
+
+#big-4 {
+    display:flex;
+    flex-direction: column;
+    margin-top:100px;
+
+}
+
+#text-1 {
+    color: red;
+    text-decoration: underline;
+}
+
+#tongthuctechieu , #tongthucte{
+    height: 30px;
+    font-size: 25px;
+    width:150px;
+}
+
+#chieuresult, #ket {
+    color:green;
+    font-size: 30px;
+}
+
+#tongket {
+    color:red;
+}
+
