@@ -221,10 +221,12 @@ function sumChitieu() {
 }
 
 // ketthuc
+let afterSang = document.getElementById('aftersang');
 let sumSang = 0;
 let ket = document.getElementById('ket');
 function ketthuc(){
     sumSang = resultsang - sumchitieu;
+    afterSang.innerHTML = sumSang;
     let tong = tongthucte - sumSang;
     if (tong < 0){
         ket.innerHTML='Thiếu '+(tong*-1);

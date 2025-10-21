@@ -47,6 +47,8 @@ input {
     grid-area: s3;
     height: auto;
     margin-left:10px;
+    display: flex;
+    flex-direction: row;
 }
 #small-4 {
     /* background-color: blue; */
