@@ -122,7 +122,11 @@
           <label style="display:inline-block;width:60px"><b>Trung:</b></label>
           <input class="trung" type="number" style="width:80px"><br>
           <label style="display:inline-block;width:60px"><b>Lớn:</b></label>
-          <input class="lon" type="number" style="width:80px">
+          <input class="lon" type="number" style="width:80px"><br>
+          <label style="display:inline-block;width:100px"><b>Trừ hay cộng:</b></label>
+<select class="dau" style="width:80px">
+  <option value="+">+</option>
+  <option value="-">-</option>
         </div>
         <div style="margin:4px 0">
           Tổng mục này: <b class="sum">0</b>
@@ -136,13 +140,16 @@
       const nho   = wrap.querySelector('.nho');
       const trung = wrap.querySelector('.trung');
       const lon   = wrap.querySelector('.lon');
+      const dau   = wrap.querySelector('.dau');
       const sumEl = wrap.querySelector('.sum');
 
       const calcOne = () => {
         const a = +nho.value   || 0;
         const b = +trung.value || 0;
         const c = +lon.value   || 0;
-        const sum = a*3 + b*4 + c*7;   // hệ số bạn đang dùng
+        const base = a*3 + b*4 + c*7;   // hệ số bạn đang dùng
+        const sign = (dau.value === '-') ? -1 : 1;
+        const sum  = base * sign;
         sumEl.textContent = sum;
         updateKhacTotal();
       };
@@ -150,6 +157,7 @@
       nho  .addEventListener('input', calcOne);
       trung.addEventListener('input', calcOne);
       lon  .addEventListener('input', calcOne);
+      dau  .addEventListener('change', calcOne);
     }
 
     // làm mới tổng khi thay đổi số lượng mục
@@ -162,7 +170,7 @@
     khacTotalEl.textContent = total;
     khacMinus.innerHTML= khacTotalEl.innerHTML;
     right.insertBefore(line7,afterKhac);
-    afterKhac.innerHTML= (+afterQuachieu.innerHTML) - (+khacMinus.innerHTML);
+    afterKhac.innerHTML= (+afterQuachieu.innerHTML) + (+khacMinus.innerHTML);
     resultsang = (+afterKhac.innerHTML);
   }
 </script>
@@ -345,18 +353,17 @@
           <input class="ten" type="text" style="width:160px">
         </div>
         <div style="margin:0">
-            
           <label style="display:inline-block;width:60px"><b>Nhỏ:</b></label>
           <input class="nho" type="number" style="width:80px"><br>
           <label style="display:inline-block;width:60px"><b>Trung:</b></label>
           <input class="trung" type="number" style="width:80px"><br>
           <label style="display:inline-block;width:60px"><b>Lớn:</b></label>
           <input class="lon" type="number" style="width:80px"><br>
-            <label style="display:inline-block;width:100px"><b>Trừ hay cộng:</b></label>
-<select class="dau" style="width:80px">
-  <option value="+">+</option>
-  <option value="-">-</option>
-</select>
+          <label style="display:inline-block;width:100px"><b>Trừ hay cộng:</b></label>
+          <select class="dau" style="width:80px">
+          <option value="+">+</option>
+          <option value="-">-</option>  
+          </select>
         </div>
         <div style="margin:4px 0">
           Tổng mục này: <b class="sum">0</b>
