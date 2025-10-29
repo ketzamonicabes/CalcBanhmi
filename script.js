@@ -91,9 +91,9 @@ boLon.addEventListener('input',()=> {calcBo(bonho,botrung,bolon,afterBo);
 let doichieu = document.getElementById('doichieu');
 let chobo = document.getElementById('bo');
 
-function calcdoichieu(a,b,c){
+function calcdoichieu(a,b,c,d){
     chobo.innerHTML = bn;
-    doichieu.innerHTML = (+a.innerHTML)+(+b)+(+c)+(+bn);
+    doichieu.innerHTML = (+a.innerHTML)+(+b)+(+c)+(+bn)+(+d);
 }
 
 // trừ đào 

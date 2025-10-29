@@ -239,7 +239,7 @@
                 <!--tính Nhỏ -->
                 <div id="small-3">
                     <script>
-                        let dao,le;
+                        let dao,le,hha;
                     </script>
                     <div id="left-2" style="width: 50%;">
                         <div>
@@ -248,18 +248,25 @@
                             
                         </div>
                         <div>
-                            <label for="dao"" style="display:inline-block;width: 50px"><b>Đào: </b></label>
+                            <label for="dao" style="display:inline-block;width: 70px"><b>Đào: </b></label>
                             <input name="dao" id="dao" type="text" style="display: inline-block; width: 100px;" oninput="dao = this.value;"></input>
                         </div>
                         <div>
-                            <label for="le"" style="display:inline-block;width: 50px"><b>Lẻ: </b></label>
-                            <input name="le" id="le" type="text" style="display: inline-block; width: 100px;" oninput="le = this.value;calcdoichieu(hoai,le,dao)"></input>
+                            <label for="hha" style="display:inline-block;width: 70px"><b>H Hà: </b></label>
+                            <input name="hha" id="hha" type="text" style="display: inline-block; width: 100px;" oninput="hha = this.value;"></input>
+                        </div>
+                        <div>
+                            <label for="le"" style="display:inline-block;width: 70px"><b>Lẻ: </b></label>
+                            <input name="le" id="le" type="text" style="display: inline-block; width: 100px;" oninput="le = this.value;calcdoichieu(hoai,le,dao,hha)"></input>
                         </div>
                         <div>
                             <label for="bo"" style="display:inline-block;width: 50px"><b>Bỏ: </b></label>
                             <p id="bo"  style="display: inline-block; width: 100px; text-align: center; "></p>
                         </div>
-                        <hr style="width: 100px;display:inline-block; margin-left: 60px; ">
+
+                        <hr style="width: 100px;display:inline-block; margin-left: 80px; ">
+
+
                         <!--tính doi chieu-->
                         <p id="doichieu" style="padding-top: 0px; font-weight:bold;padding-left:100px" ></p>
 
@@ -521,4 +528,3 @@
     <script src="script.js"></script>
    
 </html>
-
